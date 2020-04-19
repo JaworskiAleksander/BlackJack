@@ -1,12 +1,16 @@
+'''
+A simple, terminal-based implementation of Black Jack game
+'''
+
 # initial set up
 # setting up global variables
 import random   # required for shuffling a deck of cards
 
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
-ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 
-        'Ten', 'Jack', 'Queen', 'King', 'Ace')
-values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8, 'Nine':9, 'Ten':10, 
-        'Jack':10, 'Queen':10, 'King':10, 'Ace':11}
+ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine',
+         'Ten', 'Jack', 'Queen', 'King', 'Ace')
+values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8, 'Nine':9, 'Ten':10,
+          'Jack':10, 'Queen':10, 'King':10, 'Ace':11}
 
 
 playing = True
@@ -61,12 +65,16 @@ class Deck():
 
     def deal(self):
         '''
-        pop one card off a shuffled deck of cards, remove it from the stack and return a pointer to it
+        pop one card off a shuffled deck of cards,
+        remove it from the stack and return a pointer to it
         '''
         single_card = self.deck.pop()
         return single_card
 
 class Hand():
+    '''
+    A hand - set of cards that belong to a player
+    '''
     def __init__(self):
         '''
         each player start with no cards, no value and no aces
@@ -97,15 +105,27 @@ class Hand():
 
 
 class Chips():
-    def __init__(self, total):
+    '''
+    making bets!
+    '''
+    def __init__(self, total=1000):
+        '''
+        outcome of games
+        '''
         self.total = total
         self.bet = 0
 
     def win(self):
+        '''
+        add money once you win a game
+        '''
         self.total += self.bet
 
 
     def lose_bet(self):
+        '''
+        substract money when you lose a game
+        '''
         self.total -= self.bet
 
 
@@ -114,13 +134,14 @@ class Chips():
 #-------------------
 # Test code
 #-------------------
+if __name__ == '__main__':
+    
+    test_deck = Deck()
+    test_deck.shuffle()
 
-test_deck = Deck()
-test_deck.shuffle()
-
-# Player
-test_player = Hand()
-pulled_card = test_deck.deal()
-print(pulled_card)
-test_player.add_card(pulled_card)
-print(test_player.value)
+    # Player
+    test_player = Hand()
+    pulled_card = test_deck.deal()
+    print(pulled_card)
+    test_player.add_card(pulled_card)
+    print(test_player.value)
