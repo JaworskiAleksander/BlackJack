@@ -34,17 +34,35 @@ class Deck():
     this is where we store all 52 cards in some form of collection, list, et c.
     '''
     def __init__(self):
+        '''
+        initialize a deck with 52 cards
+        this happens every time an instance of Deck class is being created
+        '''
         self.deck = []  # start with an empty list
         for suit in suits:
             for rank in ranks:
-                pass
+                self.deck.append(Card(suit, rank))
 
     def __str__(self):
-        pass
+        '''
+        return string representation of a deck
+        '''
+        deck_comp = ''
+        for card in self.deck:
+            deck_comp += '\n' + card.__str__()
+        return "The deck has: " + deck_comp
 
     def shuffle(self):
-        pass
+        '''
+        shuffle, 'nuff said
+        '''
+        random.shuffle(self.deck)   # this happens in place, so there's no need to return anything
 
     def deal(self):
-        pass
+        '''
+        pop one card off a shuffled deck of cards, remove it from the stack and return a pointer to it
+        '''
+        single_card = self.deck.pop()
+        return single_card
+
 
