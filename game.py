@@ -66,7 +66,14 @@ class Deck():
         single_card = self.deck.pop()
         return single_card
 
-# testing current status of project
-test_deck = Deck()
-test_deck.shuffle()
-print(test_deck)
+class Hand():
+    def __init__(self):
+        self.cards = [] # start with an empty list
+        self.value = 0  # start with zero value
+        self.aces = 0   # add an attribute to account for an ace in stack
+
+    def add_card(self):
+        pass
+
+    def adjust_for_ace(self):
+        pass
