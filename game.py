@@ -68,12 +68,44 @@ class Deck():
 
 class Hand():
     def __init__(self):
+        '''
+        each player start with no cards, no value and no aces
+        '''
         self.cards = [] # start with an empty list
         self.value = 0  # start with zero value
         self.aces = 0   # add an attribute to account for an ace in stack
 
-    def add_card(self):
-        pass
+    def add_card(self, card):
+        '''
+        card passed in from an instance of Deck class with method deal(())
+        '''
+        self.cards.append(card)
+        self.value += values[card.rank]
+        # tracking for aces
+        if card.rank.count('Ace') != 0:
+            self.aces += 1
+
 
     def adjust_for_ace(self):
-        pass
+        '''
+        when a player has drawn an ace from a deck and total value goes over 21
+        changes ave to be 1 instead of 11
+        '''
+        while self.value > 21 and self.aces:
+            self.value -= 10
+            self.aces -= 1
+
+
+#-------------------
+# Test code
+#-------------------
+
+test_deck = Deck()
+test_deck.shuffle()
+
+# Player
+test_player = Hand()
+pulled_card = test_deck.deal()
+print(pulled_card)
+test_player.add_card(pulled_card)
+print(test_player.value)
