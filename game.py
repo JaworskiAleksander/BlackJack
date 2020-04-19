@@ -96,6 +96,21 @@ class Hand():
             self.aces -= 1
 
 
+class Chips():
+    def __init__(self, total):
+        self.total = total
+        self.bet = 0
+
+    def win(self):
+        self.total += self.bet
+
+
+    def lose_bet(self):
+        self.total -= self.bet
+
+
+
+
 #-------------------
 # Test code
 #-------------------
