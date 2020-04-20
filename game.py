@@ -115,7 +115,7 @@ class Chips():
         self.total = total
         self.bet = 0
 
-    def win(self):
+    def win_bet(self):
         '''
         add money once you win a game
         '''
@@ -163,6 +163,26 @@ def hit_or_stand(deck, hand):
             print('Wrong command, try again')
             continue
         break
+
+def player_busts(player, dealer, chips):
+    print('BUSTED PLAYER!')
+    chips.lose_bet()
+
+def player_wins(player, dealer, chips):
+    print('Player wins!')
+    chips.win_bet()
+
+def dealer_busts(player, dealer, chips):
+    print('Player wins! Dealer busted!')
+    chips.win_bet()
+
+def dealer_wins(player, dealer, chips):
+    print('Dealer wins!')
+    chips.lose_bet()
+
+def push(player, dealer):
+    print('Dealer and Player tie! PUSH')
+    pass
 
 
 #-------------------
