@@ -145,6 +145,25 @@ def take_bet(chips):
             else:
                 break
 
+def hit(deck, hand):
+    hand.add_card(deck.deal())
+    hand.adjust_for_ace()
+
+def hit_or_stand(deck, hand):
+    global playing
+
+    while True:
+        x = input('Hit or Stand? [h/s]: ')
+        if x[0].lower() == 'h':
+            hit(deck, hand)
+        elif x[0].lower() == 's':
+            print('Player Stands, Dealer\'s turn')
+            playing = False
+        else:
+            print('Wrong command, try again')
+            continue
+        break
+
 
 #-------------------
 # Test code
